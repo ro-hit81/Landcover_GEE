@@ -1,0 +1,11 @@
+{
+  "projection": {
+    "crs": "EPSG:4326",
+    "affine": {
+      "doubleMatrix": [0.0010779783409434259, 0.0, 91.50526944932365, 0.0, -0.0010779783409434259, 22.63323324644817]
+    }
+  },
+  "patchDimensions": [256, 256],
+  "patchesPerRow": 2,
+  "totalPatches": 4
+}
