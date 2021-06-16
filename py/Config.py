@@ -5,14 +5,20 @@ import time
 ts = time.time()
 timestamp = int(ts)           
 
+
+### VARIABLES TO BE MODIFIED ####
+### <--- FROM HERE ---> ###
+
 USER_NAME = 'rohit'           # NAME OF OPERATOR USING THE CODE, OUTPUTS ARE STORED IN FOLDER WITH THEIR NAME
 gtpt_asset = ee.FeatureCollection('users/rhtkhati/gt-pt-2019-2021-120m')           # Feature collection used as label data
-
 spatial_resolution = 120           # resolution of output image
-
 epochs = 50           # number of total pass of the training dataset
 lr_rate = 0.0001           # learning rate
 batch_size = 100           # total number of points in one batch
+
+
+base_distance = 5000           ## only to be increased IF extent of output lc_map is smaller than extent of AOI
+
 
 ### DEFINE THE NAME, EXTENT OF REGION OF INTEREST WITH INTERESTED YEAR
 ROI = {
@@ -27,6 +33,9 @@ ROI = {
     'doyFilterLandsat': ee.Filter.dayOfYear(1,366)
 }
 
+### <--- TILL HERE ----> ####
+
+
 
 city_name = ROI['cityName']
 year_begin = ROI['yearBegin']
@@ -35,10 +44,11 @@ year_end = ROI['yearEnd']
 IMAGE_FILE_PREFIX = city_name + '_' + str(year_begin) + '_' + str(year_end)
 FOLDER_NAME = USER_NAME + '_' + IMAGE_FILE_PREFIX + '_' + str(timestamp)
 
-kernel = ee.Kernel.gaussian(1)
+kernel_radius = 1
+kernel = ee.Kernel.gaussian(kernel_radius)
 distance = 370000
 cloud = 30
-base_distance = 5000
+
 patch_size = 256
 buffer_distance = base_distance * (round((spatial_resolution * 0.5 * patch_size)/base_distance) +1)           # extended region to include whole region of aoi
 
