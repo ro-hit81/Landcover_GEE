@@ -1,1 +1,0 @@
-conda create --name <env> --file gee_lc_reqmnt.txt
