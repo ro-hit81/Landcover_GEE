@@ -6,10 +6,8 @@
 The file **gee_lc_requirement.txt** consists of all the packages required for using the Lancover generation code. Create a virtual environment and install the packages using the following code:
 
 ```
-conda create --name <environment_name> python=3.7
-conda activate <environment_name>
 conda config --append channels conda-forge
-conda install --file gee_lc_requirement.txt
+conda create --name <environment_name> --file gee_lc_requirement.txt
 ```
 
 All the packages can be installed using '**conda**'.
