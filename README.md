@@ -7,6 +7,7 @@ The file **gee_lc_requirement.txt** consists of all the packages required for us
 
 ```
 conda create --name <environment_name>
+conda activate <environment_name>
 conda config --append channels conda-forge
 conda install --file gee_lc_requirement.txt
 ```
